@@ -45,6 +45,13 @@
       "node": true,
       "browser": true
     },
+    "globals": {
+        "$": true,
+        "Mustache": true,
+        "describe": true,
+        "it": true,
+        "expect": true
+    },
     "rules": {
       "quotes": [
         2,

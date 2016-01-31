@@ -7,6 +7,7 @@
 </head>
 <body>
   <div id="mocha"></div>
+  <div id="ui"></div>
   <script src="../bower_components/mocha/mocha.js"></script>
   <script>mocha.setup('bdd');</script>
   <script src="../bower_components/chai/chai.js"></script>
@@ -20,8 +21,11 @@
   <!-- bower:js -->
   <!-- endbower -->
   <!-- include source files here... -->
+  <script src="scripts/user-search.js"></script>
   <!-- include spec files here... -->
   <script src="spec/env.js"></script>
+  <script src="spec/string-utilities.js"></script>
+  <script src="spec/user-search.js"></script>
   <script>
     if (navigator.userAgent.indexOf('PhantomJS') === -1) {
       mocha.run();

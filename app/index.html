@@ -35,42 +35,41 @@
             <div class="form-group"> 
                 <input id="term" class="form-control" type="text"/>
             </div>
-            <button class="btn btn-primary">Search</button>
+            <button id="trigger" class="btn btn-primary">Search</button>
             <div class="clearfix"></div>
-            <h4>Results</h4>
-            <div class="display">
-                <table class="table table-striped">
-                    <thead>
-                        <th>Name</th>
-                        <th>Email</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Jane Doe</td>
-                            <td>JaneDoe@email.com</td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>JohnDoe@email.com</td>
-                        </tr>
-                        <tr>
-                            <td>Joan Doe</td>
-                            <td>JoanDoe@email.com</td>
-                        </tr>
-                        <tr>
-                            <td>James Doe</td>
-                            <td>JamesDoe@email.com</td>
-                        </tr>
-                        <tr>
-                            <td>Jess Doe</td>
-                            <td>JaneDoe@email.com</td>
-                        </tr>
-                    </tbody>    
-                </table>
-                <h6 class="pull-right">x users out of y matched the search term ''</h6>
-            </div>
+            <h4>
+                Results 
+                <span id="loading" class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+            </h4>
+            <div id="display"></div>
         </div>
     </div>
+    
+    <script id="error-tmpl" type="x-tmpl-mustache">
+        <div class="alert alert-danger" role="alert"> 
+            <strong>Oh snap!</strong> I failed to get users.
+        </div>
+    </script>
+    
+    <script id="user-results-tmpl" type="x-tmpl-mustache">
+        <table class="table table-striped">
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+            </thead>
+            <tbody>
+            {{#items}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                </tr>
+            {{/items}}
+            </tbody>    
+        </table>
+        {{#term}}
+        <h6 class="pull-right">{{items.length}} users out of {{total}} matched the search term '{{term}}'</h6>
+        {{/term}}        
+    </script>
     
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -80,6 +79,7 @@
     <!-- endbuild -->
     
     <!-- build:js scripts/main.js -->
+    <script src="scripts/user-search.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>
